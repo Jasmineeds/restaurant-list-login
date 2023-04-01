@@ -45,20 +45,7 @@ app.get('/restaurants/new', (req, res) => {
 })
 
 app.post('/restaurants', (req, res) => {
-  const body = req.body
-  return Restaurant.create(
-    {
-      name: body.nameCH,
-      name_en: body.nameEN,
-      category: body.category,
-      image: body.photo,
-      location: body.address,
-      phone: body.phone,
-      google_map: body.map,
-      rating: body.rating,
-      description: body.description
-
-    })     // save to database
+  Restaurant.create(req.body)
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
@@ -76,6 +63,14 @@ app.post('/restaurants/:id', (req, res) => {
   const { id } = req.params
   Restaurant.findByIdAndUpdate(id, req.body)
     .then(() => res.redirect(`/restaurants/${id}`))
+    .catch(err => console.log(err))
+})
+
+// delete restaurant data
+app.post('/restaurants/:id/delete', (req, res) => {
+  const { id } = req.params
+  Restaurant.findByIdAndDelete(id)
+    .then(() => res.redirect('/'))
     .catch(err => console.log(err))
 })
 
