@@ -1,0 +1,52 @@
+<h1 class="mb-1 restaurant-show-title">新餐廳</h1>
+<div class="container">
+  <!-- form to create new restaurant -->
+  <form class="row g-3 mb-5">
+    <div class="col-md-6">
+      <label for="inputNameCH" class="form-label">餐廳中文名稱 Chinese</label>
+      <input type="email" class="form-control" id="inputNameCH">
+    </div>
+    <div class="col-md-6">
+      <label for="inputNameEN" class="form-label">餐廳英文名稱 English</label>
+      <input type="password" class="form-control" id="inputNameEN">
+    </div>
+    <div class="col-md-6">
+      <label for="inputPhoneNum" class="form-label">電話 Phone</label>
+      <input type="password" class="form-control" id="inputPhoneNum">
+    </div>
+
+    <div class="col-md-4">
+      <label for="inputRating" class="form-label">評分（1~5 分）</label>
+      <select id="inputRating" class="form-select">
+        <option selected>Choose...</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div>
+
+    <div class="col-12">
+      <label for="inputAddress" class="form-label">店址 Address</label>
+      <input type="text" class="form-control" id="inputAddress" placeholder="ex. 台北市羅斯福路三段 283 巷 17 號">
+    </div>
+    <div class="col-12">
+      <label for="inputAddress" class="form-label">地圖網址 Google Map Site</label>
+      <input type="text" class="form-control" id="inputAddress" placeholder="ex. https://goo.gl/maps/123">
+    </div>
+    <div class="col-12">
+      <label for="inputPhoto" class="form-label">餐廳照片 Photo</label>
+      <input type="text" class="form-control" id="inputAddress" placeholder="ex. https://assets/01.jpg">
+    </div>
+
+    <div class="mb-3">
+      <label for="inputDescription" class="form-label">餐廳描述 Description</label>
+      <textarea class="form-control" id="inputDescription" rows="3"></textarea>
+    </div>
+
+    <div class="col-12 ">
+      <button type="submit" class="btn btn-primary">送出 Submit</button>
+    </div>
+  </form>
+</div>

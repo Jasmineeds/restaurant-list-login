@@ -24,18 +24,31 @@ db.once('open', () => {
 })
 
 // setting template engine
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
-app.set('view engine', 'handlebars')
+app.engine('hbs', exphbs({ defaultLayout: 'main' }))
+app.set('view engine', 'hbs')
 app.use(express.static('public'))
 // request monitored by bodyparser
 app.use(bodyParser.urlencoded({ extended: true }))
 
+// set routes
 app.get('/', (req, res) => {
   Restaurant.find() // take data from Restaurant model
     .lean() // transform objects in Mongoose Model to JavaScript data
     .then(restaurants => res.render('index', { restaurants }))
     .catch(error => console.error(error))
 })
+
+// create new restaurant data
+app.get('/restaurants/new', (req, res) => {
+  res.render('new')
+})
+
+// app.post('/restaurants', (req, res) => {
+//   const name = req.body.name       // 從 req.body 拿出表單裡的 name 資料
+//   return Restaurant.create({ name })     // 存入資料庫
+//     .then(() => res.redirect('/')) // 新增完成後導回首頁
+//     .catch(error => console.log(error))
+// })
 
 // search bar
 app.get('/search', (req, res) => {
