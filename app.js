@@ -43,12 +43,24 @@ app.get('/restaurants/new', (req, res) => {
   res.render('new')
 })
 
-// app.post('/restaurants', (req, res) => {
-//   const name = req.body.name       // 從 req.body 拿出表單裡的 name 資料
-//   return Restaurant.create({ name })     // 存入資料庫
-//     .then(() => res.redirect('/')) // 新增完成後導回首頁
-//     .catch(error => console.log(error))
-// })
+app.post('/restaurants', (req, res) => {
+  const body = req.body
+  return Restaurant.create(
+    {
+      name: body.nameCH,
+      name_en: body.nameEN,
+      category: body.category,
+      image: body.photo,
+      location: body.address,
+      phone: body.phone,
+      google_map: body.map,
+      rating: body.rating,
+      description: body.description
+
+    })     // save to database
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
 
 // search bar
 app.get('/search', (req, res) => {
@@ -61,7 +73,7 @@ app.get('/search', (req, res) => {
 
 // render each restaurant content
 app.get('/restaurants/:id', (req, res) => {
-  Restaurant.findOne({ id: req.params.id })
+  Restaurant.findOne({ _id: req.params.id })
     .lean()
     .then(restaurant => res.render('show', { restaurant }))
     .catch(error => console.error(error))
