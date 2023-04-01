@@ -1,42 +1,42 @@
-<h1 class="mb-1 restaurant-show-title">新餐廳</h1>
+<h1 class="mb-1 restaurant-show-title">編輯餐廳</h1>
 <div class="container">
   <!-- form to create new restaurant -->
-  <form class="row g-3 mb-5" action="/restaurants" method="POST">
+  <form class="row g-3 mb-5" action="/restaurants/{{restaurant._id}}" method="POST">
     <div class="col-md-6">
       <label for="name" class="form-label">餐廳中文名稱 Chinese</label>
-      <input type="text" class="form-control" id="name" name="name">
+      <input type="text" class="form-control" id="name" name="name" value="{{ restaurant.name }}">
     </div>
     <div class="col-md-6">
       <label for="name_en" class="form-label">餐廳英文名稱 English</label>
-      <input type="text" class="form-control" id="name_en" name="name_en">
+      <input type="text" class="form-control" id="name_en" name="name_en" value="{{ restaurant.name_en }}">
     </div>
     <div class="col-md-6">
       <label for="phone" class="form-label">電話 Phone</label>
-      <input type="text" class="form-control" id="phone" name="phone">
+      <input type="text" class="form-control" id="phone" name="phone" value="{{ restaurant.phone }}">
     </div>
 
     <div class="col-md-6">
       <label for="category" class="form-label">分類 Category</label>
-      <input type="text" class="form-control" id="category" name="category">
+      <input type="text" class="form-control" id="category" name="category" value="{{ restaurant.category }}">
     </div>
 
     <div class="col-12">
       <label for="location" class="form-label">店址 Address</label>
-      <input type="text" class="form-control" id="location" name="location" placeholder="ex. 台北市羅斯福路三段 283 巷 17 號">
+      <input type="text" class="form-control" id="location" name="location" value="{{ restaurant.location }}">
     </div>
     <div class="col-12">
       <label for="google_map" class="form-label">地圖網址 Google Map Site</label>
-      <input type="url" class="form-control" id="google_map" name="google_map"
-        placeholder="ex. https://goo.gl/maps/123">
+      <input type="url" class="form-control" id="google_map" name="google_map" value="{{ restaurant.google_map }}">
     </div>
     <div class="col-12">
       <label for="image" class="form-label">餐廳照片 Photo</label>
-      <input type="url" class="form-control" id="image" name="image" placeholder="ex. https://assets/01.jpg">
+      <input type="url" class="form-control" id="image" name="image" value="{{ restaurant.image }}">
     </div>
 
     <div class="mb-3">
       <label for="description" class="form-label">餐廳描述 Description</label>
-      <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+      <textarea class="form-control" id="description" name="description"
+        rows="3">{{ restaurant.description }}</textarea>
     </div>
 
     <div class="col-md-4">
@@ -52,7 +52,8 @@
     </div>
 
     <div class="col-12">
-      <button type="submit" class="btn btn-primary mt-5">送出 Submit</button>
+      <button type="submit" class="btn btn-primary mt-5 mb-5">送出 Submit</button>
     </div>
+    <a href="/" class="btn btn-outline-secondary">返回 Back</a>
   </form>
 </div>
