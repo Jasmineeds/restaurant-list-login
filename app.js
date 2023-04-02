@@ -25,7 +25,7 @@ app.engine('hbs', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'hbs')
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(methodOverride("_method"))
+app.use(methodOverride('_method'))
 app.use(routes)
 
 // start and listen on the Express server
