@@ -1,5 +1,5 @@
 # Restaurant List
-![image](/public/images/cover.png)
+![image](/public/images/demo.png)
 
 ## Features - 產品功能
 
