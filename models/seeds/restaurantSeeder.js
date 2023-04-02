@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
-const Restaurant = require('../restaurant') // 載入 todo model
-const raw = require('../restaurant.json') // 載入 .json
+const Restaurant = require('../restaurant') // todo model
+const raw = require('../restaurant.json') // raw data in restaurant.json
+
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
@@ -13,12 +14,13 @@ db.on('error', () => {
 })
 db.once('open', () => {
   console.log('mongodb connected!')
-  // 將所有餐廳文檔插入到資料庫中
+  console.log('running restaurantSeeder script...')
+  // restaurant data send to database
   try {
     Restaurant.insertMany(raw.results);
-    console.log('新增餐廳資料成功');
+    console.log('restaurant data added');
   } catch (err) {
     console.log(err);
   }
-  console.log('done')
+  console.log('done!')
 })

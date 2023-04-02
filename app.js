@@ -5,9 +5,7 @@ const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const Restaurant = require('./models/restaurant')
-const restaurant = require('./models/restaurant')
 
-// 加入這段 code, 僅在非正式環境時, 使用 dotenv
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
@@ -28,13 +26,14 @@ db.once('open', () => {
 app.engine('hbs', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'hbs')
 app.use(express.static('public'))
-// request monitored by bodyparser
+// request monitored by bodyParser
 app.use(bodyParser.urlencoded({ extended: true }))
 
 // set routes
+// view all restaurants
 app.get('/', (req, res) => {
   Restaurant.find() // take data from Restaurant model
-    .lean() // transform objects in Mongoose Model to JavaScript data
+    .lean() // transform objects in Mongoose Model to JavaScript object
     .then(restaurants => res.render('index', { restaurants }))
     .catch(error => console.error(error))
 })
@@ -52,8 +51,8 @@ app.post('/restaurants', (req, res) => {
 
 // edit restaurant data
 app.get('/restaurants/:id/edit', (req, res) => {
-  const id = req.params.id
-  return Restaurant.findById(id)
+  const { id } = req.params
+  Restaurant.findById(id)
     .lean()
     .then((restaurant) => res.render('edit', { restaurant }))
     .catch(error => console.log(error))
@@ -83,7 +82,7 @@ app.get('/search', (req, res) => {
     .catch(error => console.error(error))
 })
 
-// render each restaurant content
+// render specific restaurant content
 app.get('/restaurants/:id', (req, res) => {
   Restaurant.findOne({ _id: req.params.id })
     .lean()

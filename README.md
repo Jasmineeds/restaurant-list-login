@@ -1,19 +1,16 @@
 # Restaurant List
-![image](/public/images/cover.png)
+![image](/public/images/demo.png)
 
 ## Features - 產品功能
 
 - 使用者可在首頁看到所有餐廳及其基本資料
 - 使用者可點擊查看餐廳的詳細資訊
 - 使用者可搜尋餐廳名稱及餐廳分類
+- 使用者可新增 / 編輯 / 刪除餐廳資訊
 
 ## Install - 安裝流程
 
 1. Clone the project
-
-```
-git clone https://github.com/Jasmineeds/restaurant-list
-```
 
 2. Install the required dependencies
 
@@ -44,5 +41,5 @@ Express is listening on localhost:3000
 - Runtime: node @ 18.14.0
 - Framework: express @ 4.16.4
 - Template Engine: express-handlebars @ 3.0.0
+- Database: MongoDB / mongoose @ 5.9.7
 - Check package.json for other dependencies
-
