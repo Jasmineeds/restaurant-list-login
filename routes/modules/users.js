@@ -1,25 +1,16 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../../models/user')
+const passport = require('passport')
 
 router.get('/login', (req, res) => {
   res.render('login')
 })
 
-router.post('/login', (req, res) => {
-  const { email, password } = req.body
-  User.findOne({ email })
-    .then(user => {
-      if (!user) {
-        console.log('cannot find email.')
-        return res.redirect('/users/login')
-      }
-      if (user.password !== password) {
-        return res.redirect('/users/login')
-      }
-      return res.redirect('/')
-    })
-})
+router.post('/login', passport.authenticate('local', {
+  successRedirect: '/',
+  failureRedirect: '/users/login'
+}))
 
 router.get('/register', (req, res) => {
   res.render('register')
