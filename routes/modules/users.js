@@ -19,7 +19,13 @@ router.get('/register', (req, res) => {
 router.post('/register', (req, res) => {
   const { name, email, password } = req.body
   User.create({ name, email, password })
-  res.redirect('/users/register')
+  res.redirect('/users/login')
+})
+
+router.get('/logout', (req, res) => {
+  // req.flash('success_msg', '您已成功登出．')
+  req.logout()
+  res.redirect('/users/login')
 })
 
 module.exports = router
