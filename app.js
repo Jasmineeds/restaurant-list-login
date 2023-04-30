@@ -3,6 +3,7 @@ const exphbs = require('express-handlebars')
 const session = require('express-session')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
+const flash = require('connect-flash')
 
 const routes = require("./routes")
 const usePassport = require('./config/passport')
@@ -21,6 +22,15 @@ app.use(session({
   saveUninitialized: true
 }))
 usePassport(app)
+// use flash to show messages
+app.use(flash())
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.isAuthenticated()
+  res.locals.user = req.user
+  res.locals.success_msg = req.flash('success_msg')
+  res.locals.warning_msg = req.flash('warning_msg')
+  next()
+})
 // use middleware to save data in res.locals which can be access by all views
 app.use((req, res, next) => {
   console.log(req.user)
