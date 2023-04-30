@@ -1,8 +1,10 @@
 # Restaurant List
-![image](/public/images/demo.png)
+![image](/public/images/restaurant list.png)
+![image](/public/images/register page.png)
 
 ## Features - 產品功能
 
+- 使用者可以使用一般註冊及Facebook 註冊，進行登入登出
 - 使用者可在首頁看到所有餐廳及其基本資料
 - 使用者可點擊查看餐廳的詳細資訊
 - 使用者可搜尋餐廳名稱及餐廳分類
