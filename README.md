@@ -1,6 +1,6 @@
 # Restaurant List
-![image](/public/images/restaurant list.png)
-![image](/public/images/register page.png)
+![image](/public/images/restaurant-list.png)
+![image](/public/images/register-page.png)
 
 ## Features - 產品功能
 
