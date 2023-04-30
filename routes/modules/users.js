@@ -21,9 +21,9 @@ router.post('/register', (req, res) => {
   const { name, email, password, confirmPassword } = req.body
   const errors = []
 
-  if (!name || !email || !password || !confirmPassword) {
-    errors.push({ message: '請輸入所有欄位．' })
-    console.log('請輸入所有欄位．')
+  if (!email || !password || !confirmPassword) {
+    errors.push({ message: '請輸入所需欄位' })
+    console.log('請輸入所需欄位．')
   }
   if (password !== confirmPassword) {
     errors.push({ message: '兩次密碼不相符．' })
